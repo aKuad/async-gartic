@@ -67,9 +67,19 @@ sequenceDiagram
     G->>DB: Delete session ID
     G-->>-U: Answer page view update (done)
   end
+
+  alt is all turn has over
+    loop for all posted answers
+      G->>+DB: Get an answer
+      DB-->>-G: Return
+      G->>DB: Delete selected answer
+      G->>DC: Post an answer
+    end
+    G->>DB: Delete game config
+  end
 ```
 
-## Game deactivation
+## Game deactivation (Manually)
 
 ```mermaid
 sequenceDiagram
@@ -84,6 +94,6 @@ sequenceDiagram
   G-->>-U: Config page view (game activating)
 
   U->>+G: Post deactivation signal
-  G->>DB: Delete game config
+  Note over DC, DB: Do sequence same as <br> "is all turn has over" in "Game progression"
   G-->>-U: Config page view update (game deactivating)
 ```
