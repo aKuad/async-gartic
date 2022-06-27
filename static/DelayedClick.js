@@ -24,7 +24,7 @@ class DelayedClick {
    * @fn
    * @brief Start call count (Not for used from outside of class)
    */
-  startCount() {
+  startCount = () => {
     this.ele.removeEventListener("click", this.startCount);
     this.ele.addEventListener("click", this.stopCount);
     this.itv_id = setInterval(this.triggerInterval, 1000);
@@ -36,7 +36,7 @@ class DelayedClick {
    * @fn
    * @brief Stop call count
    */
-  stopCount() {
+  stopCount = () => {
     this.ele.removeEventListener("click", this.stopCount);
     this.ele.addEventListener("click", this.startCount);
     clearInterval(this.itv_id);
@@ -48,7 +48,7 @@ class DelayedClick {
    * @fn
    * @brief Countdown timer-interrupt callback (Not for used from outside of class)
    */
-  triggerInterval() {
+  triggerInterval = () => {
     this.count -= 1;
     this.ele.value = this.count;
     if(this.count <= 0) {
