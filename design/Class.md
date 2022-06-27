@@ -12,20 +12,25 @@ classDiagram
     string url_ses
 
     constructor(string url_post, string url_ses)
-    post(blob data) void
-    exit() void
+    post(blob data) undefined
+    exit() undefined
   }
 
-  class DelayedButton {
+  class DelayedClick {
     HTMLElement btn
     Function call
-    string value
+    String value_org
+    Number count
+    Number itv_id
 
-    constructor(HTMLElement btn, Function call)
+    constructor(HTMLElement ele, Function call)
+    startCount() undefined
+    stopCount() undefined
+    triggerInterval() undefined
   }
 
   main --* Connector
-  main --* DelayedButton
+  main --* DelayedClick
 ```
 
 ## On edit page
@@ -39,7 +44,7 @@ classDiagram
     [Same as "On config page"]
   }
 
-  class DelayedButton {
+  class DelayedClick {
     [Same as "On config page"]
   }
 
@@ -47,10 +52,10 @@ classDiagram
     HTMLElement ele
 
     constructor(HTMLElement ele)
-    editEnable(bool) void
+    editEnable(bool) undefined
   }
 
   main --* Connector
-  main --* DelayedButton
+  main --* DelayedClick
   main --* DrawEditor
 ```
