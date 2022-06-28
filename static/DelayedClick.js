@@ -6,10 +6,10 @@
 
 class DelayedClick {
   /**
-   * @fn
-   * @brief Constructor
+   * @constructor
+   * @brief Construct with target button element and callback function
    * @param {HTMLElement} ele Target button element
-   * @param {Function} call Target calling function
+   * @param {Function} call Click callback function
    */
   constructor(ele, call) {
     this.ele = ele;
@@ -21,8 +21,8 @@ class DelayedClick {
   }
 
   /**
-   * @fn
-   * @brief Start call count (Not for used from outside of class)
+   * @method startCount
+   * @brief Start call count
    */
   startCount = () => {
     this.ele.removeEventListener("click", this.startCount);
@@ -33,8 +33,8 @@ class DelayedClick {
   }
 
   /**
-   * @fn
-   * @brief Stop call count
+   * @method stopCount
+   * @brief Stop call count (It works as button resetting too)
    */
   stopCount = () => {
     this.ele.removeEventListener("click", this.stopCount);
@@ -45,7 +45,7 @@ class DelayedClick {
   }
 
   /**
-   * @fn
+   * @method triggerInterval
    * @brief Countdown timer-interrupt callback (Not for used from outside of class)
    */
   triggerInterval = () => {
